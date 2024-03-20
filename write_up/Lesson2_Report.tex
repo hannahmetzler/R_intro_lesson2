@@ -120,6 +120,10 @@
 
 \KOMAoption{captions}{tableheading}
 \makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
@@ -155,16 +159,23 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage{bookmark}
-
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -183,6 +194,7 @@
 
 \begin{document}
 \maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -190,7 +202,8 @@
 \end{Highlighting}
 \end{Shaded}
 
-\section{Data}\label{data}
+\hypertarget{data}{%
+\section{Data}\label{data}}
 
 Here is a look at our two data frames. First is the one we read in, the
 second is our subset with just the cat's data.
@@ -231,7 +244,8 @@ second is our subset with just the cat's data.
 6 S406  cat   UK        115     2   3.62
 \end{verbatim}
 
-\section{Figure}\label{figure}
+\hypertarget{figure}{%
+\section{Figure}\label{figure}}
 
 Here's a figure of the weight of different pets in the dataset.
 
@@ -241,7 +255,13 @@ Here's a figure of the weight of different pets in the dataset.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Lesson2_Report_files/figure-pdf/unnamed-chunk-3-1.pdf}
+\begin{figure}[H]
+
+{\centering \includegraphics{Lesson2_Report_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+}
+
+\end{figure}
 
 
 
