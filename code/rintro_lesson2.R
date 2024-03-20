@@ -1,9 +1,11 @@
 ## LOAD PACKAGES ####
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readr)
 
 ## READ IN DATA AND ORGANIZE ####
 # Read in data
-data = read_csv("data/pets.csv",  col_types = "cffiid")
+data = readr::read_csv("data/pets.csv",  col_types = "cffiid")
 
 # Look at data
 dim(data) 
@@ -39,4 +41,8 @@ data.plot <- ggplot(data, aes(x = pet, y = weight, fill = pet)) +
 data.plot
 
 # save the plot
-ggsave('figures/boxplot_pets_weight.png', plot = data.plot, width = 6, height = 4, dpi = 300)
+ggsave('figures/boxplot_pets_weight.pdf', 
+       plot =data.plot, 
+       width = 6, 
+       height = 4, 
+       dpi = 300)
